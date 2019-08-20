@@ -30,6 +30,9 @@
 ;; Setup emacs daemon
 (run-shell-command "emacs --daemon")
 
+;; Set wallpaper
+(run-shell-command "~/.fehbg")
+
 ;; Disable system bell
 (run-shell-command "xset b off")
 
