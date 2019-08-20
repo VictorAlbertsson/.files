@@ -48,14 +48,14 @@
 (define-key *root-map* (kbd ".") *program-map*)
 
 (defcommand screenshot () ()
-	    (let ((image-cd (concatenate 'string "cd " *IMAGES*)))
-	      (run-shell-command (concatenate 'string image-cd "; scrot")))) ; This should look something like "cd /home/USER/images/; scrot"
+	    (let ((screenshot-dir (concatenate 'string *HOME* "/.screenshots/")))
+	      (run-shell-command (concatenate 'string "cd " screenshot-dir "; scrot")))) ; This should look something like "cd /home/USER/.screenshots/; scrot"
 
 (defcommand screenshot-name () ()
-	    (let ((image-cd (concatenate 'string "cd " *IMAGES*)))
-	      (run-shell-command (concat image-cd "; scrot temp.png") t)
+	    (let ((screenshot-dir (concatenate 'string *HOME* "/.screenshots/")))
+	      (run-shell-command (concat "cd " screenshot-dir "; scrot temp.png") t)
 	      (let ((filename (read-one-line (current-screen) "Filename: ")))
-		(run-shell-command (concat image-cd "; mv ./temp.png ./" filename ".png")))))
+		(run-shell-command (concat "cd " screenshot-dir "; mv ./temp.png ./" filename ".png")))))
 
 (defcommand volume-control () ()
 	    "Start volume control"
