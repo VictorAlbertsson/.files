@@ -81,7 +81,7 @@
 
 (defparameter *power-map*
   (let ((m (make-sparse-keymap)))
-    (define-key m (kbd "p") "shutdown")
+    (define-key m (kbd "o") "shutdown") ; Mnemonic: power[o]ff
     (define-key m (kbd "r") "reboot")
     m))
 
