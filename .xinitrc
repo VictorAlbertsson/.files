@@ -1,3 +1,4 @@
 setxkbmap se
-compton &
+feh --no-fehbg --bg-scale --randomize --recursive ~/.wallpapers/*
+xcompmgr -c &
 exec ~/.scripts/stumpwm.ros

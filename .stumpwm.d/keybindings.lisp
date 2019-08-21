@@ -1,13 +1,17 @@
+;; -*-lisp-*-
+;; .stumpwm.d/keybindings.lisp
+;; Author: Victor Albertsson
+;; License: GPL
+
 (in-package :stumpwm)
 
 (defparameter *HOME* "/home/victor")
 
-(defparameter *IMAGES* (concatenate 'string *HOME* "/images/"))
-
 ;; Ensure correct prefix key
 (set-prefix-key (kbd "C-z"))
 
-;;(define-key *root-map* (kbd "<space>") "windowlist")
+;;(define-key *root-map* (kbd "C-c") (run-shell-command "exec urxvtc"))
+;;(define-key *root-map* (kbd "c") (run-shell-command "exec urxvtc"))
 
 (defmacro make-program-binding (program-name window-class &optional alias)
   "Create run-or-raise and run-or-pull commands for program-name
@@ -36,16 +40,13 @@
 
 (make-program-binding "emacsclient -c -a ''" "Emacs" "emacs")
 (make-program-binding "urxvtc" "Urxvt" "urxvt")
-(make-program-binding "firefox" "Firefox")
+;;(make-program-binding "dmenu" "dmenu")
 
-(defparameter *program-map*
-  (let ((m (make-sparse-keymap)))
-    (define-key m (kbd "e") |*emacs-map*|)
-    (define-key m (kbd "c") |*urxvt-map*|)
-    (define-key m (kbd "b") |*firefox-map*|)
-    m))
-
-(define-key *root-map* (kbd ".") *program-map*)
+;;(define-key *root-map* (kbd ".") |*dmenu-map*|)
+(define-key *root-map* (kbd "c") |*urxvt-map*|)
+(define-key *root-map* (kbd "C-c") |*urxvt-map*|)
+(define-key *root-map* (kbd "e") |*emacs-map*|)
+(define-key *root-map* (kbd "C-e") |*emacs-map*|)
 
 (defcommand screenshot () ()
 	    (let ((screenshot-dir (concatenate 'string *HOME* "/.screenshots/")))
@@ -97,4 +98,4 @@
     (define-key m (kbd "p") *power-map*)
     m))
 
-(define-key *root-map* (kbd "s") *system-map*)
+(define-key *root-map* (kbd ",") *system-map*)

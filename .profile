@@ -5,7 +5,7 @@
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 export PATH=$PATH:$HOME/.scripts
-export TERMINAL="urxvt"
+export TERM="urxvt"
 export EDITOR="emacsclient -c -a ''"
 export SHELL="/usr/bin/bash"
 

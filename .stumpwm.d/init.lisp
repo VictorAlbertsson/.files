@@ -11,13 +11,6 @@
 
 (setq *startup-message* (format nil "Welcome Victor, Happy Hacking!"))
 
-;; Get environmental variables
-(defparameter BROWSER (concatenate 'string "exec " (stumpwm:getenv "BROWSER"))
-  "Set default web browser command")
-
-(defparameter TERMINAL (concatenate 'string "exec " (stumpwm:getenv "TERMINAL"))
-  "Set default system terminal command")
-
 (setf *shell-program* (stumpwm:getenv "SHELL"))
 
 ;; Sound!
@@ -31,7 +24,7 @@
 (run-shell-command "emacs --daemon")
 
 ;; Set wallpaper
-(run-shell-command "~/.fehbg")
+;;(run-shell-command "~/.fehbg")
 
 ;; Disable system bell
 (run-shell-command "xset b off")

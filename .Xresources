@@ -9,6 +9,7 @@
 #define S_base2         #eee8d5
 #define S_base3         #fdf6e3
 
+URxvt*background:	[90]#002b36
 *background:            S_base03
 *foreground:            S_base0
 *fadeColor:             S_base03
@@ -58,10 +59,6 @@
 *color15:               S_base3
 
 !! URxvt
-URxvt.background:	[90]#000000
-URxvt.transparent:	true
 URxvt.depth:		32
-URxvt.intensityStyles:	false
 URxvt.font:		xft:monospace:size=15
 URxvt.scrollBar:	false
-URxvt.cursorColor:	magenta
