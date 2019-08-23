@@ -42,11 +42,9 @@
 (make-program-binding "urxvtc" "Urxvt" "urxvt")
 ;;(make-program-binding "dmenu" "dmenu")
 
-;;(define-key *root-map* (kbd ".") |*dmenu-map*|)
+;;(define-key *root-map* (kbd "d") |*dmenu-map*|)
 (define-key *root-map* (kbd "c") |*urxvt-map*|)
-(define-key *root-map* (kbd "C-c") |*urxvt-map*|)
 (define-key *root-map* (kbd "e") |*emacs-map*|)
-(define-key *root-map* (kbd "C-e") |*emacs-map*|)
 
 (defcommand screenshot () ()
 	    (let ((screenshot-dir (concatenate 'string *HOME* "/.screenshots/")))

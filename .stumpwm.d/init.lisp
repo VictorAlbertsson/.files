@@ -39,6 +39,8 @@
 (setf *message-window-gravity* :center)
 (setf *input-window-gravity* :center)
 (setf *window-format* "%n %10c: %15t|")
+(setf *new-window-preferred-frame* '(:empty :unfocused :last :focused))
+(setf *normal-border-width* 1)
 ;;(set-transient-gravity :centre)
 
 (stumpwm:add-hook stumpwm:*destroy-window-hook*
