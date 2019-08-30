@@ -12,11 +12,11 @@ shopt -s autocd # Allow autocd
 HISTSIZE= HISTFILESIZE= # Infinite history.
 
 # Sane defaults
-alias ls="ls -hN --color=auto --group-directories-first"
-alias lsa="ls -la -hN --color=auto --group-directories-first"
+alias ls="ls -lhN --color=auto --group-directories-first"
 
 # Extra
 alias wttr='curl wttr.in/Vebomark'
+alias web='surf start.duckduckgo.com'
 alias config='/usr/bin/git --git-dir=/home/victor/dotfiles --work-tree=/home/victor'
 
 # Terminal stuff

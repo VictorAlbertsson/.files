@@ -6,7 +6,8 @@
 
 export PATH=$PATH:$HOME/.scripts
 export TERM="urxvt"
-export EDITOR="emacsclient -c -a ''"
+export EDITOR="emacsclient -t"
+export VISUAL="emacsclient -c -a emacs"
 export SHELL="/usr/bin/bash"
 
 if [[ $(tty) = /dev/tty1 ]]; then
