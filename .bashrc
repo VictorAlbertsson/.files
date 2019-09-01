@@ -15,9 +15,8 @@ HISTSIZE= HISTFILESIZE= # Infinite history.
 alias ls="ls -lhN --color=auto --group-directories-first"
 
 # Extra
-alias wttr='curl wttr.in/Vebomark'
-alias web='surf start.duckduckgo.com'
-alias config='/usr/bin/git --git-dir=/home/victor/dotfiles --work-tree=/home/victor'
+alias wttr='curl wttr.in/vebomark'
+alias config='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'
 
 # Terminal stuff
 PS1='[\u@\h \W]\$ '
