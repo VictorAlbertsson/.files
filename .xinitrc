@@ -8,7 +8,6 @@ urxvtd -q -f -o &
 emacs --daemon &
 
 # Should these really be here?
-pulseaudio --start &
 syncthing --no-browser &
 
 feh --no-fehbg --bg-scale --randomize --recursive $HOME/.wallpapers/*
