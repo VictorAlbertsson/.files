@@ -10,9 +10,9 @@ super + Return
 super + @space
 	dmenu_run
 
-# open your visual editor
+# open your editor
 super + e
-        $VISUAL
+        $EDITOR
 
 # make sxhkd reload its configuration files:
 super + Escape

@@ -3,9 +3,8 @@ xcompmgr -c &
 xrdb -load $HOME/.Xresources -quiet &
 xset b off &
 xsetroot -cursor_name left_ptr &
-sxhkd -c $HOME/.sxhkdrc &
 urxvtd -q -f -o &
-emacs --daemon &
+sxhkd -c $HOME/.sxhkdrc &
 
 # Should these really be here?
 syncthing --no-browser &
