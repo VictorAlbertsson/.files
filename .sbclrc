@@ -1,0 +1,14 @@
+(require 'asdf)
+
+;;; The following lines added by ql:add-to-init-file:
+#-quicklisp
+(let ((quicklisp-init (merge-pathnames "quicklisp/setup.lisp"
+                                       (user-homedir-pathname))))
+  (when (probe-file quicklisp-init)
+    (load quicklisp-init)))
+
+(require 'quicklisp)
+#+os-unix
+(push #p"/home/victor/prog/lisp/" ql:*local-project-directories*)
+#+os-windows
+(push #p"C:\\Users\\val041116\\prog\\lisp\\" ql:*local-project-directories*)
