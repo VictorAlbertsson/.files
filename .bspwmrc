@@ -12,9 +12,9 @@ bspc config history-aware-focus   true
 
 bspc monitor -d I II III IV V VI VII VIII IX X
 
-bspc rule --add Dissenter-browser desktop='I' follow=on
-bspc rule --add Steam desktop='II' follow=on
-bspc rule --add Emacs state=tiled follow=on
+bspc rule --add Dissenter-browser desktop='I'
+bspc rule --add Emacs state=tiled
+bspc rule --add Steam desktop='III'
 
 # Autostart
 sxhkd -c $HOME/.sxhkdrc &
