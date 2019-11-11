@@ -7,12 +7,16 @@ super + Return
 	urxvtc
 
 # program launcher
-super + @space
+super + d
 	dmenu_run
 
 # open your editor
 super + e
         $EDITOR
+
+# open your browser
+super + b
+        $BROWSER
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -63,7 +67,7 @@ super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
 # focus the next/previous node in the current desktop
-super + {_,shift + }c
+super + {_,shift + }@space
 	bspc node -f {next,prev}.local
 
 # focus the next/previous desktop in the current monitor
@@ -83,7 +87,7 @@ super + {_,shift + }{1-9,0}
 #
 
 # preselect the direction
-super + ctrl + {h,j,k,l}
+super + ctrl + {b,n,p,f}
 	bspc node -p {west,south,north,east}
 
 # preselect the ratio
@@ -103,11 +107,11 @@ super + ctrl + shift + space
 #
 
 # expand a window by moving one of its side outward
-super + alt + {h,j,k,l}
+super + alt + {b,n,p,f}
 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
 # contract a window by moving one of its side inward
-super + alt + shift + {h,j,k,l}
+super + alt + shift + {b,n,p,f}
 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
 # move a floating window
