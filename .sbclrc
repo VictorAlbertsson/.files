@@ -10,5 +10,4 @@
 ;;; End of ql:add-to-init-file
 
 (require 'quicklisp)
-#+uiop
 (push (uiop:merge-pathnames* "prog/lisp" (uiop:getenv "HOME")) ql:*local-project-directories*)
