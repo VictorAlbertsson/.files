@@ -1,0 +1,14 @@
+(require 'asdf)
+(require 'uiop)
+
+;;; The following lines added by ql:add-to-init-file:
+#-quicklisp
+(let ((quicklisp-init (merge-pathnames "quicklisp/setup.lisp"
+                                       (user-homedir-pathname))))
+  (when (probe-file quicklisp-init)
+    (load quicklisp-init)))
+;;; End of ql:add-to-init-file
+
+(require 'quicklisp)
+#+uiop
+(push (uiop:merge-pathnames* "prog/lisp" (uiop:getenv "HOME")) ql:*local-project-directories*)
