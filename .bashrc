@@ -17,7 +17,7 @@ alias ls="ls -lhN --color=auto --group-directories-first"
 # Extra
 alias wttr='curl wttr.in/vebomark'
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'
-alias e=$EDITOR
+alias e="$EDITOR"
 
 # Terminal stuff
 PS1='[\u@\h \W]\$ '
