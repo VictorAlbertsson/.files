@@ -60,5 +60,5 @@ URxvt*background:	[90]#002b36
 
 !! URxvt
 URxvt.depth:		32
-URxvt.font:		xft:monospace:size=15
+URxvt.font:		xft:monospace:size=13
 URxvt.scrollBar:	false
