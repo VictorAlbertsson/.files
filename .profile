@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/bash
 #
 # ~/.profile
 #
@@ -12,8 +12,10 @@ export ALTERNATE_EDITOR=""
 export EDITOR="emacsclient -c -a emacs"
 export BROWSER="dissenter-browser"
 
-# Test if the kernel is WSL
-if grep -q Microsoft /proc/version; then
+if # Test if the kernel is WSL
+	read var </proc/sys/kernel/osrelease
+	[[ "$var" =~ "Microsoft" ]]
+then
 	export DISPLAY=:0.0
 else # Kernel is native Linux
 	# TODO Does this work properly on Arch?
