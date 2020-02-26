@@ -1,10 +1,11 @@
 #
-# ~/.bash_profile
+# ~/.profile
 #
 
-[[ -f ~/.bashrc ]] && . ~/.bashrc
+[[ -f ~/.bashrc    ]] && . ~/.bashrc
+[[ -f ~/.ghcup/env ]] && . ~/.ghcup/env
 
-export PATH=$PATH:$HOME/.scripts
+export PATH=$PATH:$HOME/.scripts:$HOME/.local/bin:$HOME/bin:$HOME/.emacs.d/bin
 export TERM="urxvtc"
 export SHELL="bash"
 export ALTERNATE_EDITOR=""
