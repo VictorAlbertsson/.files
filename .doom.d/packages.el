@@ -50,7 +50,7 @@
 ;; our package manager can't deal with; see raxod502/straight.el#279)
 ;(package! builtin-package :recipe (:branch "develop"))
 
-;;; Programming
-;(package! lsp-ui)
-;; Clojure
-(package! cider-mode)
+(when (package! clojure-mode)
+  (package! cider))
+(when (package! org-mode)
+  (package! org-preview-html))
