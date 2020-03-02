@@ -8,6 +8,5 @@ feh --no-fehbg --bg-scale --randomize --recursive $HOME/.wallpapers/*
 
 # Daemons
 xcompmgr -c &
-urxvtd -q -f -o &
 
-exec ssh-agent /usr/local/bin/stumpwm
+exec ssh-agent xmonad
