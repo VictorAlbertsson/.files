@@ -10,16 +10,6 @@ export PATH=$PATH:$HOME/.scripts:$HOME/.emacs.d/bin
 export SHELL="bash"
 export EDITOR="emacs -nw"
 
-# Ensure that one and only one ssh-agent is running
-if ! pgrep -u "$USER" ssh-agent >/dev/null; then
-	ssh-agent >"$XDG_RUNTIME_DIR/ssh-agent.env"
-fi
-
-# Set the necessary SSH environment variables
-if [[ ! "$SSH_AUTH_SOCK" ]]; then
-	eval "$(<"$XDG_RUNTIME_DIR/ssh-agent.env")"
-fi
-
 # Test whether the kernel is native or running through WSL
 if
 	read -r system_kernel </proc/sys/kernel/osrelease
@@ -32,6 +22,17 @@ else # Native
 		export VISUAL="emacs"
 		export BROWSER="brave"
 	fi
+
+	# Ensure that one and only one ssh-agent is running
+	if ! pgrep -u "$USER" ssh-agent >/dev/null; then
+		ssh-agent >"$XDG_RUNTIME_DIR/ssh-agent.env"
+	fi
+
+	# Set the necessary SSH environment variables
+	if [[ ! "$SSH_AUTH_SOCK" ]]; then
+		eval "$(<"$XDG_RUNTIME_DIR/ssh-agent.env")"
+	fi
+
 
 	if [[ $(tty) = /dev/tty1 ]]; then
 		startx
