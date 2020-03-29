@@ -1,6 +1,6 @@
 # Scripts
 setxkbmap se
-feh --no-fehbg --bg-scale --randomize --recursive "$HOME/.wallpapers/"
+xwallpaper --zoom ~/.wallpapers/arch-linux-logo-win10-style.png
 
 # Daemons
 xcompmgr -c &
