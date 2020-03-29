@@ -9,6 +9,8 @@
 export PATH=$PATH:$HOME/.scripts:$HOME/.emacs.d/bin
 export SHELL="bash"
 export EDITOR="emacs -nw"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # Test whether the kernel is native or running through WSL
 if
@@ -21,6 +23,13 @@ else # Native
 		export TERM="alacritty"
 		export VISUAL="emacs"
 		export BROWSER="brave"
+		# Spring cleaning your Home!
+		export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This might break: xauth, file doesn't exist /run/user/1000/Xauthority
+		export LESSHISTFILE="-"
+		export WGETRC="$HOME/.config/wget/wgetrc"
+		export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+		export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
+		export ALSA_CONFIG_PATH="$HOME/.config/alsa/asoundrc"
 	fi
 
 	# Ensure that one and only one ssh-agent is running
