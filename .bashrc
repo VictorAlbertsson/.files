@@ -8,11 +8,14 @@
 #
 
 stty -ixon # Disable C-s and C-q
-HISTSIZE=''
-HISTFILESIZE='' # Infinite history.
+# shopt -s autocd
+export HISTSIZE=''
+export HISTFILESIZE='' # Infinite history.
 
 # Sane defaults
 alias ls="ls -lhN --color=auto --group-directories-first"
+alias mv="mv -i"
+alias rm="rm -i"
 
 # Extra
 alias wttr='curl wttr.in/vebomark'
