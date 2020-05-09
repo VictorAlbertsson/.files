@@ -9,4 +9,4 @@
 ;;; End of ql:add-to-init-file
 
 (require 'quicklisp)
-(push (merge-pathnames "prog/lisp" (user-homedir-pathname)) ql:*local-project-directories*)
+(push (merge-pathnames "prog/projects" (user-homedir-pathname)) ql:*local-project-directories*)
