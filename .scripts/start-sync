@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Mostly meant for WSL or other systems that don't support systemd or an equivalent
+nohup syncthing &>/dev/null &
