@@ -18,7 +18,7 @@ alias mv="mv -i"
 alias rm="rm -i"
 
 # Extra
-alias wttr='curl wttr.in/vebomark'
+alias wttr='curl wttr.in/vebomark?pq'
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'
 
 # Terminal stuff

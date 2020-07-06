@@ -6,7 +6,7 @@
 [[ -f ~/.ghcup/env ]] && source "$HOME/.ghcup/env"
 [[ -f ~/.cargo/env ]] && source "$HOME/.cargo/env"
 
-export PATH=$PATH:$HOME/.scripts:$HOME/.emacs.d/bin:$HOME/.roswell/bin
+export PATH="$PATH:$HOME/.scripts"
 export SHELL="bash"
 export EDITOR="emacs -nw"
 export XDG_DATA_HOME="$HOME/.local/share"
