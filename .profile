@@ -23,13 +23,12 @@ else # Native
 		export TERM="alacritty"
 		export VISUAL="emacs"
 		export BROWSER="brave"
-		# Spring cleaning your Home!
 		export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This might break: xauth, file doesn't exist /run/user/1000/Xauthority
-		export LESSHISTFILE="-"
-		export WGETRC="$HOME/.config/wget/wgetrc"
+		export LESSHISTFILE="-" # Make less ignore history
+		export WGETRC="$XDG_DATA_HOME/wget/wgetrc"
 		export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 		export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
-		export ALSA_CONFIG_PATH="$HOME/.config/alsa/asoundrc"
+		export ALSA_CONFIG_PATH="$XDG_DATA_HOME/alsa/asoundrc"
 	fi
 
 	# Ensure that one and only one ssh-agent is running

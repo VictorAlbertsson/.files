@@ -16,6 +16,7 @@ export HISTFILESIZE='' # Infinite history.
 alias ls="ls -lhN --color=auto --group-directories-first"
 alias mv="mv -i"
 alias rm="rm -i"
+alias emacs="slurp emacs"
 
 # Extra
 alias wttr='curl wttr.in/vebomark?pq'
