@@ -6,7 +6,7 @@ where
 import Data.Tree
 
 import XMonad
-import XMonad.Config.Desktop
+import XMonad.StackSet (greedyView, shift)
 import XMonad.Layout.NoBorders
 import XMonad.Actions.TreeSelect
 import XMonad.Hooks.ManageDocks
@@ -14,14 +14,13 @@ import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Util.Run (spawnPipe)
 import XMonad.Util.EZConfig (additionalKeys)
-import qualified XMonad.StackSet as W
 
 superMask  = mod4Mask
 
 main :: IO ()
 main = do
   xmproc <- spawnPipe "xmobar"
-  xmonad $ ewmh $ docks def
+  xmonad . ewmh . docks $ def
     { modMask            = superMask
     , borderWidth        = 2
     , terminal           = "alacritty"
@@ -40,8 +39,8 @@ main = do
     , workspaces         = toWorkspaces myWorkspaces
     } `additionalKeys`
     [ ((superMask, xK_p), spawn "rofi -show run")
-    , ((superMask, xK_f), treeselectWorkspace myTreeConf myWorkspaces W.greedyView)
-    , ((superMask .|. shiftMask, xK_f), treeselectWorkspace myTreeConf myWorkspaces W.shift)
+    , ((superMask, xK_f), treeselectWorkspace myTreeConf myWorkspaces greedyView)
+    , ((superMask .|. shiftMask, xK_f), treeselectWorkspace myTreeConf myWorkspaces shift)
     ]
 
 myTreeConf = TSConfig { ts_hidechildren = True
@@ -62,8 +61,7 @@ myTreeConf = TSConfig { ts_hidechildren = True
 myWorkspaces =
         [ Node "Browser" []
         , Node "Games"
-          [ Node "Steam" []
-          , Node "1"     []
+          [ Node "1"     []
           , Node "2"     []
           , Node "3"     []
           , Node "4"     []
@@ -73,7 +71,7 @@ myWorkspaces =
           , Node "8"     []
           , Node "9"     []
           ]
-        , Node "Work"
+        , Node "System"
           [ Node "Programming" []
           , Node "Writing" []
           ]

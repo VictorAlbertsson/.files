@@ -10,6 +10,7 @@ export PATH="$PATH:$HOME/.scripts"
 export SHELL="bash"
 export EDITOR="emacs -nw"
 export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # Test whether the kernel is native or running through WSL

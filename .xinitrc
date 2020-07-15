@@ -5,4 +5,8 @@ xwallpaper --center ~/.wallpapers/pacwall.png # Set wallpaper
 xcompmgr -c & # Transparency
 emacs --daemon
 
+# Note that in order for XMonad to work properly the following directories must exist:
+## $XDG_DATA_HOME/xmonad
+## $XDG_CACHE_HOME/xmonad
+## $XDG_CONFIG_HOME/xmonad
 exec xmonad
