@@ -1,3 +1,4 @@
+-- -*- mode: Haskell -*-
 Config { font = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
        , additionalFonts = []
        , borderColor = "black"
