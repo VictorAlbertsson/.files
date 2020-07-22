@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2155
 #  ____    _    ____  _   _ ____   ____
 # | __ )  / \  / ___|| | | |  _ \ / ___|
 # |  _ \ / _ \ \___ \| |_| | |_) | |
@@ -12,16 +13,15 @@ stty -ixon # Disable C-s and C-q
 # shopt -s autocd
 export HISTSIZE=''
 export HISTFILESIZE='' # Infinite history.
+export PS1="\[\033[38;5;9m\]\u\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;10m\][\w]\[$(tput sgr0)\]\n\\$ \[$(tput sgr0)\]"
 
 # Sane defaults
-alias ls="ls -lhN --color=auto --group-directories-first"
-alias mv="mv -i"
-alias rm="rm -i"
-alias emacs="slurp emacs"
+alias ls='ls -lhN --color=auto --group-directories-first'
+alias grep='grep --color=auto'
+alias mv='mv -i'
+alias rm='rm -i'
+alias emacs='slurp emacs'
 
-# Extra
+# Personal scripts
 alias wttr='curl wttr.in/vebomark?pq'
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'
-
-# Terminal stuff
-PS1='[\u@\h \W]\$ '
