@@ -13,7 +13,7 @@ stty -ixon # Disable C-s and C-q
 # shopt -s autocd
 export HISTSIZE=''
 export HISTFILESIZE='' # Infinite history.
-export PS1="\[\033[38;5;9m\]\u\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;10m\][\w]\[$(tput sgr0)\]\n\\$ \[$(tput sgr0)\]"
+export PS1="\[\033[38;5;9m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;11m\]\u\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;10m\]\w\[$(tput sgr0)\]\n\\$ \[$(tput sgr0)\]"
 
 # Sane defaults
 alias ls='ls -lhN --color=auto --group-directories-first'
