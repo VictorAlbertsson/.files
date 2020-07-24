@@ -4,6 +4,7 @@ module Main
 where
 
 import Data.Tree
+import Control.Monad
 
 import XMonad
 import XMonad.StackSet (greedyView, shift)
@@ -39,40 +40,43 @@ main = do
     , workspaces         = toWorkspaces myWorkspaces
     } `additionalKeys`
     [ ((superMask, xK_p), spawn "rofi -show run")
-    , ((superMask, xK_f), treeselectWorkspace myTreeConf myWorkspaces greedyView)
-    , ((superMask .|. shiftMask, xK_f), treeselectWorkspace myTreeConf myWorkspaces shift)
+    , ((superMask, xK_f), -- Move focus to another workspace
+       treeselectWorkspace myTreeConf myWorkspaces greedyView)
+    , ((superMask .|. shiftMask, xK_f), -- Move both window and focus to another workspace
+       treeselectWorkspace myTreeConf myWorkspaces $ liftM2 (.) greedyView shift)
     ]
 
-myTreeConf = TSConfig { ts_hidechildren = True
-                      , ts_background   = 0xc0c0c0c0
-                      , ts_font         = "xft:Sans-16"
-                      , ts_node         = (0xff000000, 0xff50d0db)
-                      , ts_nodealt      = (0xff000000, 0xff10b8d6)
-                      , ts_highlight    = (0xffffffff, 0xffff0000)
-                      , ts_extra        = 0xff000000
-                      , ts_node_width   = 200
-                      , ts_node_height  = 30
-                      , ts_originX      = 0
-                      , ts_originY      = 0
-                      , ts_indent       = 80
-                      , ts_navigate     = defaultNavigation
-                      }
+myTreeConf =
+  TSConfig { ts_hidechildren = True
+           , ts_background   = 0xc0c0c0c0
+           , ts_font         = "xft:Sans-16"
+           , ts_node         = (0xff000000, 0xff50d0db)
+           , ts_nodealt      = (0xff000000, 0xff10b8d6)
+           , ts_highlight    = (0xffffffff, 0xffff0000)
+           , ts_extra        = 0xff000000
+           , ts_node_width   = 200
+           , ts_node_height  = 30
+           , ts_originX      = 0
+           , ts_originY      = 0
+           , ts_indent       = 80
+           , ts_navigate     = defaultNavigation
+           }
 
 myWorkspaces =
-        [ Node "Browser" []
-        , Node "Games"
-          [ Node "1"     []
-          , Node "2"     []
-          , Node "3"     []
-          , Node "4"     []
-          , Node "5"     []
-          , Node "6"     []
-          , Node "7"     []
-          , Node "8"     []
-          , Node "9"     []
-          ]
-        , Node "System"
-          [ Node "Programming" []
-          , Node "Writing" []
-          ]
-        ]
+  [ Node "Programming"
+    [ Node "Terminal" []
+    , Node "Browser" []
+    , Node "Editor" []
+    , Node "Notes" []
+    ]
+  , Node "Media"
+    [ Node "Steam" []
+    , Node "Games" []
+    , Node "Browser" []
+    , Node "Discord" []
+    ]
+  , Node "System"
+    [ Node "Terminal" []
+    , Node "Editor" []
+    ]
+  ]
