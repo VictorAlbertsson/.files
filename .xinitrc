@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Scripts
-setxkbmap se # Set language to swedish
+setxkbmap se -option compose:caps # use Swedish keyboard with compose key
 xsetroot -cursor_name left_ptr # Stop the X cursor from appearing on unclickable areas
 xwallpaper --center ~/.wallpapers/pacwall.png # Set wallpaper
 xcompmgr -c & # Transparency

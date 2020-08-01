@@ -8,7 +8,8 @@
 
 export PATH="$PATH:$HOME/.scripts"
 export SHELL="bash"
-export EDITOR="emacs -nw"
+export ALTERNATE_EDITOR="" # Substitutes the -a '' flag for the emacs client
+export EDITOR="emacsclient --tty"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -22,7 +23,7 @@ then # WSL
 else # Native
 	if [[ -f /usr/share/terminfo/s/screen.xterm-256color ]]; then
 		export TERM="alacritty"
-		export VISUAL="emacs"
+		export VISUAL="emacsclient --create-frame"
 		export BROWSER="brave"
 		export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This might break: xauth, file doesn't exist /run/user/1000/Xauthority
 		export LESSHISTFILE="-" # Make less ignore history

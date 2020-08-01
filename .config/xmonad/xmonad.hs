@@ -5,6 +5,7 @@ where
 
 import Data.Tree
 import Control.Monad
+import System.Environment
 
 import XMonad
 import XMonad.StackSet (greedyView, shift)
@@ -44,6 +45,7 @@ main = do
        treeselectWorkspace myTreeConf myWorkspaces greedyView)
     , ((superMask .|. shiftMask, xK_f), -- Move both window and focus to another workspace
        treeselectWorkspace myTreeConf myWorkspaces $ liftM2 (.) greedyView shift)
+    , ((superMask, xK_v), spawn "emacsclient --create-frame") -- v for $VISUAL
     ]
 
 myTreeConf =
@@ -73,6 +75,8 @@ myWorkspaces =
     [ Node "Steam" []
     , Node "Games" []
     , Node "Browser" []
+    , Node "Writing" []
+    , Node "GIS" []
     , Node "Discord" []
     ]
   , Node "System"
