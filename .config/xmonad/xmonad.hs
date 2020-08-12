@@ -72,11 +72,11 @@ myWorkspaces =
     , Node "Notes" []
     ]
   , Node "Media"
-    [ Node "Steam" []
+    [ Node "Launchers" []
     , Node "Games" []
     , Node "Browser" []
     , Node "Writing" []
-    , Node "GIS" []
+    , Node "Drawing" []
     , Node "Discord" []
     ]
   , Node "System"

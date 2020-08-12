@@ -20,6 +20,7 @@ alias ls="ls -lhN --color=auto --group-directories-first"
 alias grep="grep --color=auto"
 alias mv="mv -i"
 alias rm="rm -i"
+alias sbcl="rlwrap sbcl"
 alias edit="slurp emacsclient --create-frame"
 
 # Personal scripts
