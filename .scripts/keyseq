@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Find the X11 Compose-key sequence for a unicode character by regex
+grep -i "$*" /usr/share/X11/locale/en_US.UTF-8/Compose

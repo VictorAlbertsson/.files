@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Add Emacs dired-mode as the system file manager
+directory="$HOME/.local/share/applications"
+
+file="$directory/mimeapps.list"
+
+app="application/x-directory=emacs-dired.desktop
+inode/directory=emacs-dired.desktop"
+
+dired="[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+NoDisplay=true
+Exec=emacsclient --eval '(dired \"%f\")'
+Name=Dired
+Comment=Emacs Dired"
+
+sed -i "s/\[Default Applications\]/[Default Applications\]\n$app/" "$file"
+
+"$dired" > "$directory/emacs-dired.desktop"
