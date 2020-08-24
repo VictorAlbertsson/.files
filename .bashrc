@@ -25,4 +25,4 @@ alias edit="slurp emacsclient --create-frame"
 
 # Personal scripts
 alias wttr="curl wttr.in/vebomark?pq"
-alias config='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.files --work-tree=$HOME'
