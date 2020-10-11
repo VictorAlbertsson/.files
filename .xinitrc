@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
-# use Swedish keyboard with compose key and APL extensions
+# use Swedish keyboard and APL extensions
 setxkbmap se,apl \
-	  -option grp:menu_switch \
+	  -option grp:caps_switch \
 	  -option lv3:ralt_switch \
-	  -option compose:caps \
 	  -variant ,dyalog
-
 # Stop the X cursor from appearing on unclickable areas
 xsetroot -cursor_name left_ptr
 

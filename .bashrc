@@ -21,8 +21,9 @@ alias grep="grep --color=auto"
 alias mv="mv -i"
 alias rm="rm -i"
 alias sbcl="rlwrap sbcl"
-alias edit="slurp emacsclient --create-frame"
 
 # Personal scripts
 alias wttr="curl wttr.in/vebomark?pq"
 alias config='/usr/bin/git --git-dir=$HOME/.files --work-tree=$HOME'
+alias edit="slurp emacsclient --create-frame"
+alias dyalog="sudo docker run -it dyalog/dyalog"

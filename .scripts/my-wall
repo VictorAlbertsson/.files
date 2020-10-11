@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Generate The X Wallpaper
 echo "Running pacwall..."
-pacwall -b "#000000" -o ~/.wallpapers
-echo "Setting wallpaper..."
-xwallpaper --center ~/.wallpapers/pacwall.png
+pacwall # -b "#000000" -o ~/.wallpapers
+echo "Done"
+# echo "Setting wallpaper..."
+#xwallpaper --center ~/.wallpapers/pacwall.png
