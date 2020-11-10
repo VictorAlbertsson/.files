@@ -6,7 +6,7 @@
 [[ -f ~/.ghcup/env ]] && source "$HOME/.ghcup/env"
 [[ -f ~/.cargo/env ]] && source "$HOME/.cargo/env"
 
-export PATH="$PATH:$HOME/.scripts"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.scripts"
 export SHELL="bash"
 export ALTERNATE_EDITOR="" # Substitutes the -a '' flag for the emacs client
 export EDITOR="emacsclient --tty"
