@@ -24,7 +24,7 @@ else # Native
 	if [[ -f /usr/share/terminfo/s/screen.xterm-256color ]]; then
 		export TERM="alacritty"
 		export VISUAL="emacsclient --create-frame"
-		export BROWSER="brave"
+		export BROWSER="min"
 		export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This might break: xauth, file doesn't exist /run/user/1000/Xauthority
 		export LESSHISTFILE="-" # Make less ignore history
 		export WGETRC="$XDG_DATA_HOME/wget/wgetrc"
