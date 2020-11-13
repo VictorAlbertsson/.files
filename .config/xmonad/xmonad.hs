@@ -69,22 +69,20 @@ myTreeConf =
            }
 
 myWorkspaces =
-  [ Node "Programming"
-    [ Node "Terminal" []
-    , Node "Browser" []
-    , Node "Editor" []
-    , Node "Notes" []
-    ]
-  , Node "Media"
-    [ Node "Launchers" []
-    , Node "Games" []
-    , Node "Browser" []
-    , Node "Writing" []
-    , Node "Drawing" []
-    , Node "Discord" []
-    ]
-  , Node "System"
-    [ Node "Terminal" []
-    , Node "Editor" []
+  [ Node "System" 
+    []
+  , Node "Programming" 
+    []
+  , Node "Entertainment"
+    [ Node "Launchers" 
+      []
+    , Node "Games" 
+      []
+    , Node "Web" 
+      []
+    , Node "Drawing" 
+      []
+    , Node "Social Media" 
+      []
     ]
   ]
