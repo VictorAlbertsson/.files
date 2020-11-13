@@ -7,7 +7,8 @@ Plug 'ervandew/supertab'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 " Rust IDE
-Plug 'rust-lang/rust.vim' | Plug 'vim-syntastic/syntastic'
+Plug 'rust-lang/rust.vim'
+Plug 'vim-syntastic/syntastic'
 " LISP IDE
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'guns/vim-sexp'
@@ -20,15 +21,13 @@ Plug 'kien/rainbow_parentheses.vim'
 Plug 'bhurlow/vim-parinfer'
 " Haskell IDE
 Plug 'neovimhaskell/haskell-vim'
-Plug 'nbouscal/vim-stylish-haskell'
-" C# IDE
-
+" Plug 'nbouscal/vim-stylish-haskell'
 call plug#end()
 
 " More convenient leader key
-noremap <Space> <Nop>
-sunmap <Space>
-let mapleader = "<space>"
+" noremap <Space> <Nop>
+" sunmap <Space>
+let mapleader = " "
 
 " Automatically remove all trailing whitespace
 autocmd FileType c,cpp,cs,rs,lisp,clj,hs autocmd BufWritePre <buffer> %s/\s\+$//e
@@ -38,15 +37,33 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
-" Mitigates an YCM bug, preview popup not closing
-" let g:ycm_autoclose_preview_window_after_insertion = 1
+" Easy unhighlight
+nnoremap <leader>h :noh<cr>
 
 " Hide dotfiles, show with 'gc'
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 
-" Required to get YCM Rust completion
-" You have to install rust-src nightly with rustup for this path to work
-" let g:ycm_rust_src_path = '~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
+" ConTeXt
+fun! ConTeXtClean()
+  let l:currdir = expand("%:p:h")
+  let l:tmpdirs = ['out'] " Temporary directories
+  let l:suffixes = ['aux', 'bbl', 'blg', 'fls', 'log', 'tuc', 'synctex'] " Suffixes of temporary files
+  for ff in glob(l:currdir . '/*.{' . join(l:suffixes, ',') . '}', 1, 1)
+    call delete(ff)
+  endfor
+  for dd in l:tmpdirs
+    let l:subdir = l:currdir . '/' . dd
+    if isdirectory(l:subdir)
+      for ff in glob(l:subdir . '/*.{' . join(l:suffixes, ',') . '}', 1, 1)
+        call delete(ff)
+      endfor
+    endif
+    call delete(l:subdir) " Delete directory (only if empty)
+  endfor
+  echomsg "Aux files removed"
+endf
+
+nnoremap <leader>tt :<c-u>update<cr>:ConTeXt<cr>:call ConTeXtClean()<cr>
 
 " Format Rust code on save
 let g:rustfmt_autosave = 1
