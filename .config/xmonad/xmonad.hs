@@ -41,11 +41,15 @@ main = do
     , workspaces         = toWorkspaces myWorkspaces
     } `additionalKeys`
     [ ((superMask, xK_p), spawn "rofi -show run")
-    , ((superMask, xK_f), -- Move focus to another workspace
-       treeselectWorkspace myTreeConf myWorkspaces greedyView)
-    , ((superMask .|. shiftMask, xK_f), -- Move both window and focus to another workspace
-       treeselectWorkspace myTreeConf myWorkspaces $ liftM2 (.) greedyView shift)
-    , ((superMask, xK_v), spawn "emacsclient --create-frame") -- v for $VISUAL
+    , ((superMask .|. shiftMask, xK_p), spawn "passmenu --type")
+    -- Move focus to another workspace
+    , ((superMask, xK_f), treeselectWorkspace myTreeConf myWorkspaces greedyView)
+    -- Move both window and focus to another workspace
+    , ((superMask .|. shiftMask, xK_f), treeselectWorkspace myTreeConf myWorkspaces $ liftM2 (.) greedyView shift)
+    -- Open editor in a new tab (v for $VISUAL)
+    -- TODO replace nvim with $VISUAL
+    -- TODO replace alacritty with some terminal variable
+    , ((superMask, xK_v), spawn "alacritty -e nvim")
     ]
 
 myTreeConf =

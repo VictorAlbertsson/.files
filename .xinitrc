@@ -16,8 +16,9 @@ xcompmgr -c &
 # Start Emacs
 emacs --daemon &
 
-# Note that in order for XMonad to work properly the following directories must exist:
+# Note that in order for XMonad to work properly the following directories must exist
 ## $XDG_DATA_HOME/xmonad
 ## $XDG_CACHE_HOME/xmonad
 ## $XDG_CONFIG_HOME/xmonad
+# and ~/.xmonad can't exist
 exec xmonad
