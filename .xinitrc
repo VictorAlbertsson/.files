@@ -8,7 +8,7 @@ setxkbmap se,apl \
 xsetroot -cursor_name left_ptr
 
 # Set wallpaper
-xwallpaper --center ~/.wallpapers/pacwall.png
+xwallpaper --center ~/.wallpapers/arch-linux-logo-win10-style.png
 
 # Transparency
 xcompmgr -c &
