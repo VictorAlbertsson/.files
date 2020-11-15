@@ -1,5 +1,5 @@
 [description:"Gymnasiearbete" entry:"1605356691" modified:"1605356691" priority:"H" status:"pending" uuid:"16077e32-5ea5-4509-a6a2-a1416b799a7c"]
 [description:"Lära mig kinesiska" entry:"1605356723" modified:"1605356723" status:"pending" uuid:"be3b38c0-2b01-433c-817c-205a31ff0df4"]
-[description:"Kemi\/Prov\/2" due:"1605826800" entry:"1605356819" modified:"1605356819" status:"pending" uuid:"cbca8fcd-3daa-46de-9c1c-088f46f64fa2"]
+[description:"Kemi\/Prov\/2" due:"1605826800" entry:"1605356819" modified:"1605444181" priority:"H" status:"pending" uuid:"cbca8fcd-3daa-46de-9c1c-088f46f64fa2"]
 [description:"Programmeringsolympiaden" due:"1606172400" entry:"1605356848" modified:"1605356848" status:"pending" uuid:"f577c481-dc8a-4733-a5e3-8ef34d2f9fa5"]
 [description:"Svenska\/Hyllningstal för Edsger W. Dijkstra" due:"1605654000" entry:"1605356889" modified:"1605357306" status:"pending" uuid:"53b09bf4-9fd8-455d-9722-ad247bc536c5"]
