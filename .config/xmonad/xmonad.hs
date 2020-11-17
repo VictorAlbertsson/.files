@@ -42,6 +42,8 @@ main = do
     } `additionalKeys`
     [ ((superMask, xK_p), spawn "rofi -show run")
     , ((superMask .|. shiftMask, xK_p), spawn "passmenu --type")
+    -- 'autoclicker' script at ~/.scripts/autoclicker
+    , ((superMask, xK_c), spawn "autoclicker")
     -- Move focus to another workspace
     , ((superMask, xK_f), treeselectWorkspace myTreeConf myWorkspaces greedyView)
     -- Move both window and focus to another workspace
@@ -73,16 +75,14 @@ myWorkspaces =
     []
   , Node "Programming" 
     []
-  , Node "Entertainment"
-    [ Node "Launchers" 
-      []
-    , Node "Games" 
-      []
-    , Node "Web" 
-      []
-    , Node "Drawing" 
-      []
-    , Node "Social Media" 
-      []
-    ]
+  , Node "Launchers" 
+    []
+  , Node "Games" 
+    []
+  , Node "Web" 
+    []
+  , Node "Drawing" 
+    []
+  , Node "Social Media" 
+    []
   ]

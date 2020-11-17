@@ -1,0 +1,2 @@
+#/usr/bin/env bash
+killall xdotool || while xdotool click 1; do :; done
