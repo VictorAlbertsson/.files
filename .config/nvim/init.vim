@@ -1,5 +1,8 @@
 call plug#begin(stdpath('data') . '/plugged')
 " Text Editing
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-rmarkdown'
 " Generic Programming
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
@@ -28,6 +31,8 @@ call plug#end()
 " noremap <Space> <Nop>
 " sunmap <Space>
 let mapleader = " "
+set clipboard+=unnamedplus
+" let g:clipboard = xclip
 
 " Automatically remove all trailing whitespace
 autocmd FileType c,cpp,cs,rs,lisp,clj,hs autocmd BufWritePre <buffer> %s/\s\+$//e
@@ -43,7 +48,13 @@ nnoremap <leader>h :noh<cr>
 " Hide dotfiles, show with 'gc'
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 
+" (R) Markdown
+nnoremap <leader>tm :<c-u>update<rc>:RMarkdown pdf<cr>
+
 " ConTeXt
+
+nnoremap <leader>tt :<c-u>update<cr>:ConTeXt<cr>:call ConTeXtClean()<cr>
+
 fun! ConTeXtClean()
   let l:currdir = expand("%:p:h")
   let l:tmpdirs = ['out'] " Temporary directories
@@ -62,8 +73,6 @@ fun! ConTeXtClean()
   endfor
   echomsg "Aux files removed"
 endf
-
-nnoremap <leader>tt :<c-u>update<cr>:ConTeXt<cr>:call ConTeXtClean()<cr>
 
 " Format Rust code on save
 let g:rustfmt_autosave = 1
