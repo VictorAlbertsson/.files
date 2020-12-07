@@ -10,6 +10,7 @@ import System.Environment
 import XMonad
 import XMonad.StackSet (greedyView, shift)
 import XMonad.Layout.NoBorders
+import XMonad.Layout.Spacing
 import XMonad.Actions.TreeSelect
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
@@ -44,7 +45,7 @@ myWorkspaces =
     []
   , Node "Writing" 
     []
-  , Node "Socialization" 
+  , Node "Social (JK)"
     []
   , Node "Launchers" 
     []
@@ -68,7 +69,7 @@ main = do
                            , transience
                            , isFullscreen -?> doFullFloat
                            ]
-    , layoutHook         = avoidStruts $ smartBorders $ layoutHook def
+    , layoutHook         = avoidStruts $ smartBorders $ spacing 12 $ layoutHook def -- +2 spacing to counteract the borderwidth
     , handleEventHook    = composeAll
                            [ handleEventHook def
                            , fullscreenEventHook
