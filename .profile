@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!env bash
 # ~/.profile
 
 # shellcheck disable=SC1090
@@ -6,6 +6,7 @@
 [[ -f ~/.ghcup/env ]] && source "$HOME/.ghcup/env"
 [[ -f ~/.cargo/env ]] && source "$HOME/.cargo/env"
 
+export GUILE_PACKAGE_PATH=$HOME/.guix-profile/share/guile/site/3.0/
 export PATH="$PATH:/opt/context/tex/texmf-linux-64/bin:$HOME/.local/bin:$HOME/.scripts"
 export SHELL="bash"
 export ALTERNATE_EDITOR="" # Substitutes the -a '' flag for the emacs client
