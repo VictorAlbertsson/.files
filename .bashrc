@@ -27,16 +27,16 @@ export SHELL
 source /etc/bashrc
 
 # Adjust the prompt depending on whether we're in 'guix environment'.
+# NOTE `tput' requires `ncurses' to be installed
 if [ -n "$GUIX_ENVIRONMENT" ]
 then
-    PS1='\u@\h \w [env]\$ '
+    PS1="\[\033[38;5;9m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;11m\]\u\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;10m\]\w\[$(tput sgr0)\] [env]\n\\$ \[$(tput sgr0)\]"
 else
-    PS1='\u@\h \w\$ '
+    PS1="\[\033[38;5;9m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;11m\]\u\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;10m\]\w\[$(tput sgr0)\]\n\\$ \[$(tput sgr0)\]"
 fi
 
 export HISTSIZE=""
 export HISTFILESIZE="" # Infinite history.
-export PS1="\[\033[38;5;9m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;11m\]\u\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;10m\]\w\[$(tput sgr0)\]\n\\$ \[$(tput sgr0)\]"
 
 # Sane defaults
 alias ls="ls -lhpN --color=auto --group-directories-first"
