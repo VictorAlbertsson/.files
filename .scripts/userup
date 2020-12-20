@@ -1,0 +1,61 @@
+#!/usr/bin/env guile
+!#
+
+;;; userup.scm --- Populate the Guix user profile
+
+(use-modules (ice-9 format)
+	     (ice-9 ftw)
+	     (ice-9 match)
+	     (ice-9 regex)
+	     (srfi srfi-1)
+	     (srfi srfi-26))
+
+(define* (mapconcat proc lst #:optional (separator ""))
+  "Apply PROC to each element of LST and concatenate the result strings into a single string using SEPARATOR."
+  (match lst
+    (() "")
+    ((elt . rest)
+     (fold (lambda (elt res)
+	     (string-append res separator (proc elt)))
+	   (proc elt)
+	   rest))))
+
+(define (build-file-name . file-parts)
+  "Return file name by concatenating FILE-PARTS with slashes."
+  (mapconcat identity file-parts "/"))
+
+(define (home-file . file-parts)
+  "Return file name from my home directory."
+  (apply build-file-name (getenv "HOME") file-parts))
+
+(define (config-file . file-parts)
+  "Return file name from my config directory."
+  (apply home-file ".config" file-parts))
+
+(define (guix-config-file . file-parts)
+  "Return file name from my Guix config directory."
+  (apply config-file "guix" file-parts))
+
+(define (guix-manifest-file)
+  "Return file name of the user Guix manifest file."
+  (guix-config-file "manifest.scm"))
+
+(define (populate-profile)
+  (let ((manifest (guix-manifest-file)))
+    (if (file-exists? manifest)
+        (system* "guix"
+		 "package"
+		 (string-append "--manifest=" manifest))
+        (format (current-error-port)
+                "Manifest file '~a' does not exist~%"
+                manifest))))
+
+(define (main _)
+  (populate-profile)
+  ;; (system* "source" profile) ; TODO Source the updated profile
+  )
+
+(when (batch-mode?)
+  (main (command-line)))
+
+;;; profile.scm ends here
