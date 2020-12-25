@@ -11,6 +11,7 @@
    "pavucontrol"
    "syncthing"
    "neofetch" ; For style points
+   "htop" ; Convenient system administration
    "guile"
    "guile-chickadee"
    "emacs" ; To complete the Lisp machine
