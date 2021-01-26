@@ -12,15 +12,18 @@ import XMonad.StackSet (greedyView, shift)
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Spacing
 import XMonad.Actions.TreeSelect
+-- import XMonad.Wallpaper
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Util.Run (spawnPipe)
 import XMonad.Util.EZConfig (additionalKeys)
 
-myModMask  = mod4Mask
-
-myTerminal = "alacritty"
+myModMask         = mod4Mask
+myTerminal        = "kitty"
+mySpacing         = 5
+myLauncher        = "rofi -show run"
+myPasswordManager = "rofi-pass"
 
 myTreeConf =
   TSConfig { ts_hidechildren = True
@@ -57,6 +60,7 @@ myWorkspaces =
 
 main :: IO ()
 main = do
+  -- setRandomWallpaper [ "$HOME/Wallpapers" ] -- Doesn't work
   xmproc <- spawnPipe "xmobar"
   xmonad . ewmh . docks $ def
     { modMask            = myModMask
@@ -69,15 +73,17 @@ main = do
                            , transience
                            , isFullscreen -?> doFullFloat
                            ]
-    , layoutHook         = avoidStruts $ smartBorders $ spacing 12 $ layoutHook def -- +2 spacing to counteract the borderwidth
+    , layoutHook         = avoidStruts 
+                           $ spacingRaw True (Border 0 mySpacing mySpacing mySpacing) True (Border mySpacing mySpacing mySpacing mySpacing) True 
+                           $ layoutHook def -- +2 spacing to counteract the borderwidth
     , handleEventHook    = composeAll
                            [ handleEventHook def
                            , fullscreenEventHook
                            ]
     , workspaces         = toWorkspaces myWorkspaces
     } `additionalKeys`
-    [ ((myModMask, xK_p), spawn "rofi -show run")
-    , ((myModMask .|. shiftMask, xK_p), spawn "passmenu --type")
+    [ ((myModMask, xK_p), spawn myLauncher)
+    , ((myModMask .|. shiftMask, xK_p), spawn myPasswordManager)
     -- 'autoclicker' script at ~/.scripts/autoclicker
     , ((myModMask, xK_c), spawn "autoclicker")
     -- Move focus to another workspace
@@ -85,6 +91,5 @@ main = do
     -- Move both window and focus to another workspace
     , ((myModMask .|. shiftMask, xK_f), treeselectWorkspace myTreeConf myWorkspaces $ liftM2 (.) greedyView shift)
     -- Open editor in a new tab (v for $VISUAL)
-    -- TODO replace nvim with $VISUAL
-    , ((myModMask, xK_v), spawn $ myTerminal ++ " -e nvim")
+    , ((myModMask, xK_v), spawn $ myTerminal ++ " -e nano")
     ]
