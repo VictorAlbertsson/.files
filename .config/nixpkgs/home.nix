@@ -14,10 +14,16 @@
 
   # Configure-less user programs
   home.packages = [
-    pkgs.killall
+    #pkgs.killall
+    # System utilities
+    pkgs.git
+    pkgs.wget
     pkgs.htop
     pkgs.neofetch
-    pkgs.rofi-pass
+    #pkgs.rofi-pass
+    # Programming languages
+    pkgs.zig
+    # Games
     pkgs.steam # Unfree
     pkgs.multimc
   ];
@@ -25,19 +31,31 @@
   # User programs
   programs = {
     home-manager.enable = true;
-    rofi.enable = true;
+    rofi = {
+      enable = true;
+      pass = {
+        enable = true;
+      };
+    };
     neovim = {
       enable = true;
       viAlias = true;
       vimAlias = true;
       vimdiffAlias = true;
-      plugins = with pkgs.vimPlugins; [ vim-airline vim-nix ];
+      plugins = with pkgs.vimPlugins; [
+        vim-airline
+        vim-nix
+        vim-zig
+      ];
       settings = { 
         ignorecase = true; 
         mouse = "a"; 
       };
     };
-    taskwarrior.enable = true;
+    taskwarrior = {
+      enable = true;
+      dataLocation = "${config.xdg.dataHome}/.task";
+    };
     kitty.enable = true;
     brave.enable = true;
   };
