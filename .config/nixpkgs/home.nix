@@ -12,13 +12,13 @@
     enableContribAndExtras = true;
   };
 
-  # User configure-less programs
+  # Configure-less user programs
   home.packages = [
     pkgs.killall
     pkgs.htop
     pkgs.neofetch
     pkgs.rofi-pass
-    pkgs.steam
+    pkgs.steam # Unfree
     pkgs.multimc
   ];
 
@@ -26,6 +26,17 @@
   programs = {
     home-manager.enable = true;
     rofi.enable = true;
+    neovim = {
+      enable = true;
+      viAlias = true;
+      vimAlias = true;
+      vimdiffAlias = true;
+      plugins = with pkgs.vimPlugins; [ vim-airline vim-nix ];
+      settings = { 
+        ignorecase = true; 
+        mouse = "a"; 
+      };
+    };
     taskwarrior.enable = true;
     kitty.enable = true;
     brave.enable = true;
