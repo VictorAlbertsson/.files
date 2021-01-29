@@ -12,7 +12,6 @@ import XMonad.StackSet (greedyView, shift)
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Spacing
 import XMonad.Actions.TreeSelect
--- import XMonad.Wallpaper
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.EwmhDesktops
@@ -20,8 +19,9 @@ import XMonad.Util.Run (spawnPipe)
 import XMonad.Util.EZConfig (additionalKeys)
 
 myModMask         = mod4Mask
-myTerminal        = "kitty"
 mySpacing         = 5
+myTerminal        = "kitty"
+myEditor          = "vim"
 myLauncher        = "rofi -show run"
 myPasswordManager = "rofi-pass"
 
@@ -41,26 +41,8 @@ myTreeConf =
            , ts_navigate     = defaultNavigation
            }
 
-myWorkspaces =
-  [ Node "System" 
-    []
-  , Node "Programming" 
-    []
-  , Node "Writing" 
-    []
-  , Node "Social (JK)"
-    []
-  , Node "Launchers" 
-    []
-  , Node "Games" 
-    []
-  , Node "Web" 
-    []
-  ]
-
 main :: IO ()
 main = do
-  -- setRandomWallpaper [ "$HOME/Wallpapers" ] -- Doesn't work
   xmproc <- spawnPipe "xmobar"
   xmonad . ewmh . docks $ def
     { modMask            = myModMask
@@ -74,13 +56,16 @@ main = do
                            , isFullscreen -?> doFullFloat
                            ]
     , layoutHook         = avoidStruts 
-                           $ spacingRaw True (Border 0 mySpacing mySpacing mySpacing) True (Border mySpacing mySpacing mySpacing mySpacing) True 
+                           $ spacingRaw True
+                                        (Border 0 mySpacing mySpacing mySpacing)
+                                        True
+                                        (Border mySpacing mySpacing mySpacing mySpacing)
+                                        True 
                            $ layoutHook def -- +2 spacing to counteract the borderwidth
     , handleEventHook    = composeAll
                            [ handleEventHook def
                            , fullscreenEventHook
                            ]
-    , workspaces         = toWorkspaces myWorkspaces
     } `additionalKeys`
     [ ((myModMask, xK_p), spawn myLauncher)
     , ((myModMask .|. shiftMask, xK_p), spawn myPasswordManager)
@@ -91,5 +76,5 @@ main = do
     -- Move both window and focus to another workspace
     , ((myModMask .|. shiftMask, xK_f), treeselectWorkspace myTreeConf myWorkspaces $ liftM2 (.) greedyView shift)
     -- Open editor in a new tab (v for $VISUAL)
-    , ((myModMask, xK_v), spawn $ myTerminal ++ " -e nano")
+    , ((myModMask, xK_v), spawn $ myTerminal ++ " -e " ++ myEditor)
     ]
