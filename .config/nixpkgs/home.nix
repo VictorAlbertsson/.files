@@ -14,13 +14,11 @@
 
   # Configure-less user programs
   home.packages = [
-    #pkgs.killall
     # System utilities
     pkgs.git
     pkgs.wget
     pkgs.htop
     pkgs.neofetch
-    #pkgs.rofi-pass
     # Programming languages
     pkgs.zig
     # Games
@@ -30,34 +28,36 @@
 
   # User programs
   programs = {
-    home-manager.enable = true;
-    rofi = {
+    home-manager.enable = true; # Allow home-manager to update itself
+    rofi = { # Graphical pop-up menu (program launcher)
       enable = true;
-      pass = {
+      pass = { # Password menu
         enable = true;
       };
     };
-    neovim = {
+    vim = { # Text editor
       enable = true;
-      viAlias = true;
-      vimAlias = true;
-      vimdiffAlias = true;
       plugins = with pkgs.vimPlugins; [
+        # Cosmetics
         vim-airline
+        # Languages
         vim-nix
-        vim-zig
+        zig-vim
       ];
-      settings = { 
-        ignorecase = true; 
-        mouse = "a"; 
+      settings = {
+        ignorecase = true;
+        mouse = "a";
       };
+      extraConfig = ''
+        set lazyredraw
+        '';
     };
-    taskwarrior = {
+    taskwarrior = { # Task manager
       enable = true;
       dataLocation = "${config.xdg.dataHome}/.task";
     };
-    kitty.enable = true;
-    brave.enable = true;
+    kitty.enable = true; # Terminal
+    brave.enable = true; # Browser
   };
 
   # User services
