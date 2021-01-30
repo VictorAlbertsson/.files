@@ -1,3 +1,5 @@
 [user]
 	email = victor.albertsson@live.se
 	name = Victor Albertsson
+[pull]
+	rebase = false
