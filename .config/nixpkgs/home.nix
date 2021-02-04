@@ -50,7 +50,18 @@
       };
       extraConfig = ''
         set lazyredraw
+        let g:markdown_folding = 1
         '';
+    };
+    newsboat = { # RSS reader
+      enable = true;
+      urls = [
+        { 
+          url = "http://lambda-the-ultimate.org/rss.xml"; 
+          tags = [ "programming" "language design" ];
+          title = "Lambda the Ultimate";
+        }
+      ];
     };
     taskwarrior = { # Task manager
       enable = true;
@@ -58,6 +69,15 @@
     };
     kitty.enable = true; # Terminal
     brave.enable = true; # Browser
+  };
+
+  xdg.mime.enable = true;
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "default-web-browser" = "brave-browser.desktop";
+      "text/html" = "brave-browser.desktop";
+    };
   };
 
   # User services
