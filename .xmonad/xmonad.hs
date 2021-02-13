@@ -16,6 +16,7 @@ mySpacing         = 5
 myTerminal        = "kitty"
 myEditor          = "vim"
 myLauncher        = "rofi -show run"
+myCalculator      = "rofi -show calc -modi calc -no-show-match -no-sort"
 myPasswordManager = "rofi-pass"
 
 main :: IO ()
@@ -47,7 +48,9 @@ main = do
     [ ((myModMask, xK_p), spawn myLauncher)
     , ((myModMask, xK_f), spawn myPasswordManager)
     -- 'autoclicker' script at ~/.scripts/autoclicker
-    , ((myModMask, xK_c), spawn "autoclicker")
+    , ((myModMask, xK_a), spawn "autoclicker")
+    -- Open the system calculator
+    , ((myModMask, xK_c), spawn myCalculator)
     -- Open editor in new window
     , ((myModMask, xK_e), spawn $ myTerminal ++ " -e " ++ myEditor)
     ]
