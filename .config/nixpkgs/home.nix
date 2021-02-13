@@ -10,6 +10,9 @@
   xsession.windowManager.xmonad = {
     enable = true;
     enableContribAndExtras = true;
+    extraPackages = haskellPackages: [
+      haskellPackages.xmobar
+    ];
   };
 
   # Configure-less user programs
@@ -19,11 +22,17 @@
     pkgs.wget
     pkgs.htop
     pkgs.neofetch
+    pkgs.calc # TO BE REPLACED by rofi-calc
+    pkgs.xmobar
+    #pkgs.rofi-calc # Not working
     # Programming languages
     pkgs.zig
     # Games
     pkgs.steam # Unfree
     pkgs.multimc
+    # Other
+    pkgs.deluge
+    pkgs.cmus
   ];
 
   # User programs
@@ -46,6 +55,7 @@
       ];
       settings = {
         ignorecase = true;
+        expandtab = true;
         mouse = "a";
       };
       extraConfig = ''
@@ -67,6 +77,7 @@
       enable = true;
       dataLocation = "${config.xdg.dataHome}/.task";
     };
+    zathura.enable = true; # PDF viewer
     kitty.enable = true; # Terminal
     brave.enable = true; # Browser
   };
