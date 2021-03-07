@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
-
+let
+  unstableTarball = fetchTarball https://github.com/NixOS/nixpkgs-channels/archive/nixos-unstable.tar.gz;
+  unstable = import unstableTarball {};
+in
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -16,24 +19,30 @@
   };
 
   # Configure-less user programs
-  home.packages = [
+  home.packages = with pkgs; [
     # System utilities
-    pkgs.git
-    pkgs.wget
-    pkgs.htop
-    pkgs.neofetch
-    pkgs.calc # TO BE REPLACED by rofi-calc
-    pkgs.xmobar
-    #pkgs.rofi-calc # Not working
+    git
+    wget
+    htop
+    neofetch
+    calc # TO BE REPLACED by rofi-calc
+    xmobar
+    sxiv
+    youtube-dl
+    #rofi-calc # Not working
     # Programming languages
-    pkgs.zig
+    zig
+    rustup
+    gcc
     # Games
-    pkgs.steam # Unfree
-    pkgs.multimc
+    multimc
     # Other
-    pkgs.deluge
-    pkgs.cmus
-  ];
+    deluge
+    cmus
+    qgis
+  ] ++ (with unstable; [
+    steam # Electron-based apps not working on stable
+  ]);
 
   # User programs
   programs = {
