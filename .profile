@@ -13,7 +13,7 @@
 export PATH="$PATH:/opt/context/tex/texmf-linux-64/bin:$HOME/.local/bin:$HOME/.scripts"
 export SHELL="bash"
 export ALTERNATE_EDITOR="" # Substitutes the -a '' flag for the emacs client
-export EDITOR="nvim"
+export EDITOR="vim"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -27,8 +27,8 @@ then # WSL
 else # Native
 	if [[ -f /usr/share/terminfo/s/screen.xterm-256color ]]; then
 		export TERM="alacritty"
-		export VISUAL="nvim"
-		export BROWSER="vimb"
+		export VISUAL="vim"
+		export BROWSER="brave"
 		export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This might break: xauth, file doesn't exist /run/user/1000/Xauthority
 		export LESSHISTFILE="-" # Make less ignore history
 		export WGETRC="$XDG_DATA_HOME/wget/wgetrc"
