@@ -47,6 +47,5 @@ alias sbcl="rlwrap sbcl"
 
 # Personal scripts
 alias wttr="curl wttr.in/vebomark?pq"
-alias config='git --git-dir=$HOME/.files --work-tree=$HOME'
 alias edit="slurp emacsclient --create-frame"
 alias dyalog="sudo docker run -it dyalog/dyalog"
